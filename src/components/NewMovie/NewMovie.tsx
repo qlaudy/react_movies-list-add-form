@@ -29,7 +29,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     movie.imdbUrl.trim() !== '' &&
     movie.imdbId.trim() !== '';
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!isValid) {
       return;
@@ -64,7 +64,6 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Description"
         value={movie.description}
         onChange={value => handleFieldChange('description', value)}
-        required
       />
 
       <TextField
