@@ -29,8 +29,8 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     movie.imdbUrl.trim() !== '' &&
     movie.imdbId.trim() !== '';
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
     if (!isValid) {
       return;
     }
@@ -44,7 +44,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
       imdbUrl: '',
       imdbId: '',
     });
-    setCount(c => c + 1);
+    setCount(currentCount => currentCount + 1);
   };
 
   return (
@@ -64,6 +64,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Description"
         value={movie.description}
         onChange={value => handleFieldChange('description', value)}
+        required
       />
 
       <TextField
@@ -71,6 +72,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Image URL"
         value={movie.imgUrl}
         onChange={value => handleFieldChange('imgUrl', value)}
+        required
       />
 
       <TextField
@@ -78,6 +80,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Imdb URL"
         value={movie.imdbUrl}
         onChange={value => handleFieldChange('imdbUrl', value)}
+        required
       />
 
       <TextField
@@ -85,6 +88,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Imdb ID"
         value={movie.imdbId}
         onChange={value => handleFieldChange('imdbId', value)}
+        required
       />
 
       <div className="field is-grouped">
